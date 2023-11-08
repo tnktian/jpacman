@@ -1,3 +1,4 @@
+
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
@@ -9,10 +10,10 @@ name: JPacman CI with Gradle
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
-    
+    branches: [ "master" ]
+
 permissions:
   contents: write
   packages: write
@@ -29,11 +30,12 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
+        cache: gradle
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
       run: xvfb-run ./gradlew build
-    
+
     - name: Generate JaCoCo Badge
       uses: cicirello/jacoco-badge-generator@v2
       with:
@@ -55,3 +57,4 @@ jobs:
           add: '.github/badges/*.svg'
     - name: Show test results
       run: cat build/reports/jacoco/test/jacocoTestReport.csv
+
