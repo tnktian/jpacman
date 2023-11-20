@@ -64,12 +64,12 @@ public class MapParserTest {
                     each row or contain invalid characters
                     */
                 map.add("############");
-                map.add("#P   SSS  G#");
+                map.add("#P   N    G#");
                 map.add("############");
                 mapParser.parseMap(map);
                 mapParser.parseMap(map);
             });
-        Assertions.assertEquals("Invalid character at 5,1: S", thrown.getMessage());
+        Assertions.assertEquals("Invalid character at 5,1: N", thrown.getMessage());
     }
 
 }
